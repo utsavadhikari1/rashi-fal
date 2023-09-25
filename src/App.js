@@ -1,11 +1,15 @@
+import React from "react";
+import Rashifal from "./components/Rashifal";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-import './App.css';
 
 function App() {
   return (
-    <div className= "App">
-     Welcome to  Rashifal world
-
+    <div>
+      <Navbar/>
+      <Rashifal />
+      <Footer />  
     </div>
   );
 }
