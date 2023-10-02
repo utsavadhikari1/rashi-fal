@@ -1,19 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect}  from 'react'
 
 const DateTime = () => {
-  const [date, setDate] = useState(new Date());
 
-  useEffect(() => {
+const [date, setDate] = useState(new Date());
+
+useEffect(() => {
     const timer = setInterval(() => setDate(new Date()), 1000);
     return () => clearInterval(timer);
-  }, []);
+}, []);
+
+const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
 
   return (
-    <div className="flex items-center justify-center text-2xl text-red-700">
-      {date.toLocaleTimeString()}
-      <div>{date.toLocaleDateString()}</div>
+    <div className='flex items-center justify-center text-2xl font-bold text-red-600'>
+        <h2>{date.toLocaleTimeString()}</h2> 
+        <h2>{date.toLocaleDateString(undefined, options)}</h2>
     </div>
   );
-};
+}
 
 export default DateTime;
+
+// import React, { useState, useEffect } from "react";
+
+// const DateTime = () => {
+//   const [date, setDate] = useState(new Date());
+//   useEffect(() => {
+//     const timer = setInterval(() => setDate(new Date()), 1000);
+//     return () => clearInterval(timer);
+//   }, []);
+//   const bsDate = date.toLocaleDateString("ne-NP", {
+//     year: "numeric",
+//     month: "long",
+//     day: "numeric",
+//   });
+//   const bsTime = date.toLocaleTimeString("ne-NP", {
+//     hour: "numeric",
+//     minute: "numeric",
+//     second: "numeric",
+//   });
+//   return (
+//     <div>
+      
+//       <div>
+//         {bsDate} {bsTime}
+//       </div>
+//     </div>
+//   );
+// }
+// export default DateTime;
