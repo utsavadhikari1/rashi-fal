@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 const Rashifal = () => {
-  const [rashifal, setRashifals] = useState([]);
-  const [loading, isLoading] = useState(true);
+  const [rashifal, setRashifal] = useState([]);
+  const [loading, setLoading] = useState(true);
   const API = "https://rashifal-api.vercel.app/api";
 
   const fetchApiData = async (url) => {
@@ -10,7 +10,8 @@ const Rashifal = () => {
       const res = await fetch(url);
       const data = await res.json();
       console.log(data);
-      // isLoading = false;
+      setRashifal(data); // Update the rashifal state with the fetched data
+      setLoading(false); // Set loading to false once data is available
     } catch (error) {
       console.log(error);
     }
@@ -20,35 +21,85 @@ const Rashifal = () => {
     fetchApiData(API);
   }, []);
 
-  if (isLoading) {
-    return (
-      <div>
-        <h1 className="flex justify-center sticky text-2xl">
-          आजको राशिफल हेर्नुहोस ।
-          </h1>
-          {rashifal.map((rashi, index) => (
-          <div key={index}>
-            <h2>{rashi.name}</h2>
-          </div>
-        ))}
-          <div className = "flex justify-center py-2" >
-        <input 
+  return (
+    <div>
+      <div className="flex justify-center py-2">
+        <input
           type="text"
           placeholder="राशिको नाम लेख्नुहोस।"
           className=" border border-black flex-0 outline-none mr-2 p-1 rounded-lg"
         />
         <button className="bg-orange-600  text-white font-bold py-2 px-4 rounded-lg border-b-4">
-          Search 
-          </button>
-          </div>
-       </div>
-    );
-  } 
+          Search
+        </button>
+      </div>
+      <h1 className=" flex justify-center py-2 text-2xl">आजको राशिफल हेर्नुहोस ।</h1>
+
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div>
+          {rashifal.map((item, index) => (
+            <div className="grid grid-cols-2 gap-4 rounded-lg p-5 text-center"> 
+            <div key={index} className="bg-white p-4 border border-orange-600 rounded-lg shadow-md">
+              <h2 className="text-lg font-semibold">{item.sunsign}</h2>
+              <p>{item.prediction}</p>
+            </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Rashifal;
-  
 
+// import React, { useEffect, useState } from "react";
+
+// const Rashifal = () => {
+//   const [rashifal, setRashifals] = useState([]);
+//   const [loading, isLoading] = useState(true);
+//   const API = "https://rashifal-api.vercel.app/api";
+
+//   const fetchApiData = async (url) => {
+//     try {
+//       const res = await fetch(url);
+//       const data = await res.json();
+//       console.log(data);
+//       // isLoading = false;
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchApiData(API);
+//   }, []);
+
+//   if (isLoading) {
+//     return (
+//       <div>
+//         <h1 className="flex justify-center sticky text-2xl">
+//           आजको राशिफल हेर्नुहोस ।
+//           </h1>
+
+//           <div className = "flex justify-center py-2" >
+//         <input
+//           type="text"
+//           placeholder="राशिको नाम लेख्नुहोस।"
+//           className=" border border-black flex-0 outline-none mr-2 p-1 rounded-lg"
+//         />
+//         <button className="bg-orange-600  text-white font-bold py-2 px-4 rounded-lg border-b-4">
+//           Search
+//           </button>
+//           </div>
+//        </div>
+//     );
+//   }
+// };
+
+// export default Rashifal;
 
 // const Rashifal = () =>{
 
@@ -77,5 +128,3 @@ export default Rashifal;
 //   )
 
 // }
-
-

@@ -159,7 +159,7 @@ const RashifalBox = () => {
       </div>
       <div className="bg-white  p-4">
         <button className="bg-orange-600  text-white font-bold py-2 px-4 rounded-lg ">
-          कुम्भ ( गु, गे, गो, सा, सि, सु, से, सो, दा )
+          कुम्भ  मीन( गु, गे, गो, सा, सि, सु, से, सो, दा )
         </button>
       </div>
       <div className="bg-white  p-4">
