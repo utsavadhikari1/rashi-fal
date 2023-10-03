@@ -27,24 +27,27 @@ const Rashifal = () => {
         <input
           type="text"
           placeholder="राशिको नाम लेख्नुहोस।"
-          className=" border border-black flex-0 outline-none mr-2 p-1 rounded-lg"
+          className="border border-black flex-0 outline-none mr-2 p-1 rounded-lg"
         />
-        <button className="bg-orange-600  text-white font-bold py-2 px-4 rounded-lg border-b-4">
+        <button className="bg-orange-600 text-white font-bold py-2 px-4 rounded-lg border-b-4">
           Search
         </button>
       </div>
-      <h1 className=" flex justify-center py-2 text-2xl">आजको राशिफल हेर्नुहोस ।</h1>
+      <h1 className="flex justify-center py-2 text-xl">
+        आजको राशिफल हेर्नुहोस ।
+      </h1>
 
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
           {rashifal.map((item, index) => (
-            <div className="grid grid-cols-2 gap-4 rounded-lg p-5 text-center"> 
-            <div key={index} className="bg-white p-4 border border-orange-600 rounded-lg shadow-md">
+            <div
+              key={index} // Use the index as the key
+              className="bg-white p-4 border border-gray-300 rounded-lg shadow-md"
+            >
               <h2 className="text-lg font-semibold">{item.sunsign}</h2>
               <p>{item.prediction}</p>
-            </div>
             </div>
           ))}
         </div>
@@ -54,6 +57,7 @@ const Rashifal = () => {
 };
 
 export default Rashifal;
+
 
 // import React, { useEffect, useState } from "react";
 
