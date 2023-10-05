@@ -1,7 +1,7 @@
 import React from "react";
 import DateTime from "./DateTime";
 
-const Navbar = () => {
+const Navbar = ({ searchInput, handleSearch }) => {
   // const [isActive, setIsActive] = useState(true);
   // useEffect(() => {
   //   window.addEventListener("scroll", () => {
@@ -9,7 +9,7 @@ const Navbar = () => {
 
       return (
         <div className="relative">
-        <nav className=" sticky grid grid-flow-col bg-orange-600 w-full ">
+        <nav className="  grid grid-flow-col bg-orange-600 w-full ">
           <div className="flex justify-left sticky p-5 bg-orange-600  py-4 text-2xl text-white">
             तपाईको दैनिक राशिफल
           </div>
@@ -19,6 +19,8 @@ const Navbar = () => {
               type="text"
               placeholder="राशिको नाम लेख्नुहोस।"
               className="border border-black flex-0 outline-none mr-2 p-1 rounded-lg"
+              value={searchInput}
+              onchange={handleSearch}
             />
             <button className="bg-red-600 text-white font-bold py-2 px-4 rounded-lg border-b-4">
               Search
