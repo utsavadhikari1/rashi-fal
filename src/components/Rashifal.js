@@ -27,17 +27,19 @@ const Rashifal = () => {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <div className="grid grid-cols-2  gap-4 p-2">
+          <h1  className="text-2xl ">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4 p-2">
             {rashifal.map((item, index) => (
               <div
                 key={index}
                 className="bg-white p-3 border border-gray-300 rounded-lg shadow-md mb-4"
               >
-                <h2 className="text-lg font-semibold">{item.sunsign}</h2>
+                <h2 className="text-2xl font-semibold">{item.sunsign}</h2>
                 <p className="text-base">{item.prediction}</p>
               </div>
             ))}
           </div>
+          </h1>
         )}
       </div>
     </>
@@ -45,6 +47,7 @@ const Rashifal = () => {
 };
 
 export default Rashifal;
+
 
 
 // import React, { useEffect, useState } from "react";
