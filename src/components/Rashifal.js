@@ -1,34 +1,34 @@
+
 import React, { useEffect, useState } from "react";
 
 const Rashifal = () => {
-  const [rashifal, setRashifal] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const API = "https://rashifal-api.vercel.app/api";
+ const [rashifal, setRashifal] = useState([]);
+ const [loading, setLoading] = useState(true);
+ const API = "https://rashifal-api.vercel.app/api";
 
-  const fetchApiData = async (url) => {
+ const fetchApiData = async () => {
     try {
-      const res = await fetch(url);
+      const res = await fetch(API);
       const data = await res.json();
-      console.log(data);
       setRashifal(data);
       setLoading(false);
     } catch (error) {
       console.log(error);
     }
-  };
+ };
 
-  useEffect(() => {
-    fetchApiData(API);
-  }, []);
+ useEffect(() => {
+    fetchApiData();
+ }, []);
 
-  return (
+ return (
     <>
-      <div className="content">
+    <body>
+      <div className="content p-4 px-2 my-2">
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <h1  className="text-2xl ">
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4 p-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3">
             {rashifal.map((item, index) => (
               <div
                 key={index}
@@ -39,11 +39,11 @@ const Rashifal = () => {
               </div>
             ))}
           </div>
-          </h1>
         )}
       </div>
+      </body>
     </>
-  );
+ );
 };
 
 export default Rashifal;
